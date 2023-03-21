@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   def index
     # @tasks = Task.where(user_id: current_user.id)
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.recent
   end
 
   def new
