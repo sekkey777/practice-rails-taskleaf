@@ -8,10 +8,15 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
   end
-
+  
   def create
     # @task = Task.new(task_params.merge(user_id: current_user.id))
     @task = current_user.tasks.new(task_params)
+
+    if params[:back].present?
+      render :new
+      return
+    end
     
     if @task.save
       logger.debug "task: #{@task.attributes.inspect}"
@@ -35,6 +40,11 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     redirect_to tasks_url, notice: "タスク「#{@task.name}」を削除しました"
+  end
+
+  def confirm_new
+    @task = current_user.tasks.new(task_params)
+    render :new unless @task.valid?
   end
 
   private
