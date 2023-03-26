@@ -12,6 +12,14 @@ class Task < ApplicationRecord
     end
   end
   
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      task = new
+      task.attributes = row.to_hash.slice(*csv_attributes)
+      task.save!
+    end
+  end
+  
   # before_validation :set_nameless_name
   validates :name, presence: true, length: { maximum: 30 }
   validate :validate_name_not_including_comma
