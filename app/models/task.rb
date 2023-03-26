@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id          :bigint           not null, primary key
+#  description :text
+#  name        :string(30)       not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint           not null
+#
+# Indexes
+#
+#  index_tasks_on_user_id  (user_id)
+#
 class Task < ApplicationRecord
   def self.csv_attributes
     ["name", "description", "created_at", "updated_at"]
