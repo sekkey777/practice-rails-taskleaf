@@ -6,6 +6,7 @@ h1 ユーザー一覧
 table.table.table-hover
   thead.thead-default
     tr
+      th= User.human_attribute_name(:id)
       th= User.human_attribute_name(:name)
       th= User.human_attribute_name(:email)
       th= User.human_attribute_name(:admin)
@@ -15,6 +16,7 @@ table.table.table-hover
   tbody
     - @users.each do |user|
       tr
+        td= user.id
         td= link_to user.name, [:admin, user]
         td= user.email
         td= user.admin? ? 'あり' : 'なし'
