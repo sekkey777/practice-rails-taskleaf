@@ -1,2 +1,26 @@
-h1 Posts#show
-p Find me in app/views/posts/show.html.slim
+h1 投稿の詳細
+
+= link_to '一覧', posts_path, class: 'nav-link'
+
+table.table.table-hover
+  tbody
+    tr
+      th = Post.human_attribute_name(:id)
+      td = @post.id
+    tr
+      th = Post.human_attribute_name(:title)
+      td = @post.title
+    tr
+      th = Post.human_attribute_name(:content)
+      td = auto_link(simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: "div"))
+    tr
+      th = Post.human_attribute_name(:image)
+      td = image_tag @post.image.variant(resize: "500x500") if @post.image.attached?
+    tr
+      th = Post.human_attribute_name(:created_at)
+      td = @post.created_at
+    tr
+      th = Post.human_attribute_name(:updated_at)
+      td = @post.updated_at
+= link_to '編集', edit_post_path(@post), class: 'btn btn-primary mr-3'
+= link_to '削除', @post, method: :delete, data: { confirm: "タスク「#{@post.title}」を削除します。よろしいですか？" }, class: 'btn btn-primary'

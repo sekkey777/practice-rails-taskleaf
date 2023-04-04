@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'posts/index'
-  get 'posts/show'
-  get 'posts/new'
-  get 'posts/edit'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -14,5 +10,6 @@ Rails.application.routes.draw do
     post :confirm, action: :confirm_new, on: :new
     post :import, on: :collection
   end
+  resources :posts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

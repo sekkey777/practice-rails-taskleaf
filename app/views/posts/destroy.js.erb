@@ -1,0 +1,5 @@
+document.querySelector("#post-<%= @post.id %>").style.display = "none"
+
+let message = document.createElement("p");
+message.innerText = "投稿「<%= @post.title %>」を削除しました。残りの投稿は<%= current_user.posts.count %>件です。";
+document.querySelector("table").insertAdjacentElement("beforebegin", message);
