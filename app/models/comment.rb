@@ -1,20 +1,15 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: comments
 #
 #  id         :bigint           not null, primary key
-#  content    :text
-#  title      :string
+#  comment    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  post_id    :integer          not null
 #  user_id    :integer          not null
 #
-class Post < ApplicationRecord
+class Comment < ApplicationRecord
   belongs_to :user
-  has_many :comments
-  has_one_attached :image
-
-  def self.ransackable_attributes(auth_object = nil)
-    ["title", "created_at"]
-  end
+  belongs_to :post
 end
