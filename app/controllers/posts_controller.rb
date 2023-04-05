@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
-    @q = current_user.posts.ransack(params[:q])
+    @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
