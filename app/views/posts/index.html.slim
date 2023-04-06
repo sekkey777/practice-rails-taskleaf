@@ -23,6 +23,7 @@ table.table.table-hover
     tr
       th= sort_link(@q, :title)
       th= "投稿者"
+      th= "コメント数"
       th= Post.human_attribute_name(:created_at)
       th
   tbody
@@ -30,6 +31,7 @@ table.table.table-hover
       tr id="post-#{post.id}" class="back-color"
         td= link_to post.title, post_path(post)
         td= post.user.name
+        th= post.comments.count
         td= post.created_at
         td
           = link_to '編集', edit_post_path(post), class: 'btn btn-primary mr-3'
