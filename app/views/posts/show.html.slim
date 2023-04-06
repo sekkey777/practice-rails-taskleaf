@@ -23,4 +23,21 @@ table.table.table-hover
       th = Post.human_attribute_name(:updated_at)
       td = @post.updated_at
 = link_to '編集', edit_post_path(@post), class: 'btn btn-primary mr-3'
-= link_to '削除', @post, method: :delete, data: { confirm: "タスク「#{@post.title}」を削除します。よろしいですか？" }, class: 'btn btn-primary'
+
+h1 コメント一覧
+
+- if @post.comments.present?
+  ul
+    - @post.comments.each do |comment|
+      li= comment.user.name
+      li= comment.comment
+
+h3 コメントする
+
+= form_with model: @comment, url: post_comments_path(@post.id) do |f|
+  .form-group
+    = f.label :comment
+    = f.text_field :comment, class: 'form-control', placeholder: "コメントを入力"
+    = f.hidden_field :post_id, :value => @post.id
+  = f.submit "コメントする", class: 'btn btn-primary'
+
