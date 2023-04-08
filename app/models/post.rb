@@ -12,6 +12,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments
+  has_many :likes
   has_one_attached :image
 
   def self.ransackable_attributes(auth_object = nil)
