@@ -20,4 +20,28 @@
   .form-group
     = f.label :password_confirmation, 'パスワード（確認）'
     = f.password_field :password_confirmation, class: 'form-control'
+  .form-check.form-check-inline
+    = f.label :age, '10代', class: "form-check-label"
+    = f.radio_button :age, 10, class: "form-check-input"
+  .form-check.form-check-inline
+    = f.label :age, '20代', class: "form-check-label"
+    = f.radio_button :age, 20, class: "form-check-input"
+  .form-check.form-check-inline
+    = f.label :age, '30代', class: "form-check-label"
+    = f.radio_button :age, 30, class: "form-check-input"
+  .form-check.form-check-inline
+    = f.label :age, '40代', class: "form-check-label"
+    = f.radio_button :age, 40, class: "form-check-input"
+  .form-check.form-check-inline
+    = f.label :age, '50代', class: "form-check-label"
+    = f.radio_button :age, 50, class: "form-check-input"
+  .form-check.form-check-inline
+    = f.label :age, '60代', class: "form-check-label"
+    = f.radio_button :age, 60, class: "form-check-input"
+  .form-check.form-check-inline
+    = f.label :sex, '男性', class: "form-check-label"
+    = f.radio_button :sex, 1, class: "form-check-input"
+  .form-check.form-check-inline
+    = f.label :sex, '女性', class: "form-check-label"
+    = f.radio_button :sex, 2, class: "form-check-input"
   = f.submit '登録する', class: 'btn btn-primary'
